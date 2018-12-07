@@ -1,7 +1,7 @@
 # read file
-tekstBestand = open("adreslijst.txt", "r")
+tekstBestand = open("addresslist.txt", "r")
 # opens the file to copy to
-kopieBestand = open("kopieLijst.txt", "w")
+kopieBestand = open("copy_addresslist.txt", "w")
 
 # loop checks if line is empty
 empty = False

@@ -1,4 +1,4 @@
-# read file
+ read file
 tekstBestand = open("adreslijst.txt", "r")
 # opens the file to copy to
 kopieBestand = open("kopieLijst.txt", "w")

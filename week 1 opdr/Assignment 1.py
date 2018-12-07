@@ -1,6 +1,6 @@
 from operator import itemgetter, attrgetter
 # read file
-tekstBestand = open("adreslijst.txt", "r")
+tekstBestand = open("addresslist.txt", "r")
 totaalTabel = []
 empty = False
 while (not empty):
