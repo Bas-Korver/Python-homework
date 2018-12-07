@@ -1,0 +1,6 @@
+12345,Janssen,Jan,Kerkstraat 2,Heerlen
+12346,Pieters,Piet,Maasstraat 3,Heerlen
+12347,Klaassen,Klazien,Kerkstraat 2,Maastricht
+12348,Klaassen,Jan,Lindelaan 345,Maastricht
+12349,Kaps,Fred,Lindenlaan 13,Maasbracht
+12344,Elzinga,Els,Waalstraat 1a,Valkenburg
