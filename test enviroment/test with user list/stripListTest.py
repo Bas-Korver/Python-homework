@@ -6,7 +6,7 @@ def enterFile():
         fileName = input('Enter the filename here, without the suffux("txt"): ')
         fileName += str('.txt')
         try:
-            file = open(fileName, 'r')
+            open(fileName)
         except FileNotFoundError:
             print('')
             print('File not found, please try again')
@@ -17,18 +17,17 @@ def enterFile():
             print('')
             notFound = False
 
-    return(file)
+    return(fileName)
 
-def fileToList(originalFileName, seperator):
+def fileToList(fileName, seperator):
 
     # creates a list in which the file is put into
     tempList = []
 
-    with originalFileName as file:
+    with open(fileName) as file:
         for line in file:
-            tempList.append(line.strip("\n").split(seperator))
+            tempList.append(line.strip().split(seperator))
     return (tempList)
 
-sep = ","
-convertedList = fileToList(enterFile(), sep)
+convertedList = fileToList(enterFile(), ',')
 print(convertedList)

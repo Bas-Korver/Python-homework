@@ -296,7 +296,6 @@ a = 8
 notoutofrange = True
 tijd = 0
 
-#module om alle leden van een workshop in een 3d array te zetten en de begin en eindtijd te berkenen
 for i in range(0, aantal_workshops):
     if workshop_lijst[i][6] != 0:
         temp_planning2d = []

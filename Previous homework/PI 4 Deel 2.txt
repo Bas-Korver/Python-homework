@@ -1,0 +1,12 @@
+nummer naam vak1 vak2 vak3 vak4 vak5
+1234567 Jan 0 7 0 6 4
+3526435 Marie 0 5 7 0 0
+2230431 Kees 0 10 0 8 6
+7685433 André 0 7 8 7 5
+0364678 Antoinette 0 2 8 8 8
+1424354 Jerôme 0 9 0 5 0
+4536576 Kamal 0 0 8 7 8
+1256033 Diana 0 0 0 0 0
+5504657 Petra 0 6 7 0 6
+9676575 Malika 0 6 0 0 8
+0253756 Samira 0 8 6 7 10
