@@ -26,7 +26,7 @@ def fileToList(originalFileName, seperator):
 
     with originalFileName as file:
         for line in file:
-            tempList.append(line.strip("\n").split(seperator))
+            tempList.append(line.strip().split(seperator))
     return (tempList)
 
 sep = ","
