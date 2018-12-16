@@ -7,7 +7,7 @@ def fileToList(fileName, seperator):
     tempList = []
 
     # opens the file and defines it as a temp var called file
-    with fileName as file:
+    with open(fileName) as file:
 
         # iterates over each line in file until it hits a pointer exeption
         # (a.k.a blank line)
