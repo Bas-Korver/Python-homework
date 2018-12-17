@@ -56,4 +56,10 @@ def fileToList(fileName, seperator):
     # returns list which has the file info in it
     return (tempList)
 
-print(fileToList(enterFile(), ','))
+def Menu():
+    loop = True
+    while loop:
+        print('__________________________________________________________')
+        print('│  Maak een keuze uit de volgende opties:                │')
+        print('│  1.                                                    │')
+        print('‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾')
