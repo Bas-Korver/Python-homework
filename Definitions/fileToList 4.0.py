@@ -6,7 +6,8 @@ def fileToList(fileName, seperator):
     # creates a list in which the file is put into
     tempList = []
 
-    # opens the file and defines it as a temp var called file
+    # opens the file and defines it as a temp var called file.  The mode (r, w,
+    # etc) is not added because it wil now automaticaly choose 'r'
     with open(fileName) as file:
 
         # iterates over each line in file until it hits a pointer exeption
