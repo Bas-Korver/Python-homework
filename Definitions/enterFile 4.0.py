@@ -12,7 +12,7 @@ def enterFile():
         fileName = input('Enter the filename here, without the suffux("<enter file suffix here>"): ')
 
         # adds custom file extention
-        fileName += str('<enter file suffix here>')
+        fileName += str('<enter file suffix here> (example: ".txt")')
 
         # assigns the opening of a file to a variable, and tries to open it
         try:
