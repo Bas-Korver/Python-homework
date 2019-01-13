@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="https://structorizer.fisch.lu" version="3.28-08" preRepeat="until " postFor="to" preReturn="return" postForIn="in" preWhile="while " output="OUTPUT" input="INPUT" preFor="for" preExit="exit" preLeave="leave" ignoreCase="true" preForIn="foreach" stepFor="by" author="jeine" created="2019-01-08" changedby="jeine" changed="2019-01-08" origin="Structorizer 3.28-08" text="&#34;def yesNoQuestion()&#34;" comment="&#34;&#34;" color="ffffff" type="program" style="nice">
+	<children>
+		<instruction text="&#34;yesNoInput = input(&#34;&#34;Yes or no? (Y/N)&#34;&#34;)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<while text="&#34;while (not (yesNoInput == (&#34;&#34;Y&#34;&#34; or &#34;&#34;N&#34;&#34; or &#34;&#34;y&#34;&#34; or &#34;&#34;n&#34;&#34;)&#34;" comment="&#34;&#34;" color="ffffff" disabled="0">
+			<qWhile>
+				<instruction text="&#34;print(&#34;&#34;Sorry, input is not recognised. Please try again.&#34;&#34;)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+				<instruction text="&#34;yesNoInput = input(&#34;&#34;Yes or no? (Y/N)&#34;&#34;)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+			</qWhile>
+		</while>
+		<instruction text="&#34;return (yesNoInput)&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+	</children>
+</root>
