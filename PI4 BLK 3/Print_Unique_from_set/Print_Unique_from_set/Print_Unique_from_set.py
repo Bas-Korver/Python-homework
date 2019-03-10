@@ -12,8 +12,6 @@ def unique(list):
     # before it
     for x in range(1, len(list)):
         total+= " ^ " + str(list[x])
-        print(total)
-
     # runs the calculation as described in the string total
     symDifference = eval(total)
  
