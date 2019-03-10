@@ -63,7 +63,7 @@ def calcDeviation(continualValues, mean):
     lenValues = len(continualValues)
     sumSquared = 0
     for i in continualValues:
-        sumSquared += ((int(i) - mean)**2)
+        sumSquared += ((float(i.replace(",", ".")) - mean)**2)
     mathVariable = (sumSquared / (lenValues - 1))
     deviation = (mathVariable**0.5)
     return deviation
@@ -79,7 +79,7 @@ def calcIQR(discreteValues):
     else:
         quartile1 = calcMedian(discreteValues[0:medianIndex])
         quartile3 = calcMedian(discreteValues[(medianIndex + 1):])
-    IQR = int(quartile1) - int(quatile2)
+    IQR = int(quartile1) - int(quartile3)
     return (IQR)
 
 # calculates mean
@@ -87,7 +87,7 @@ def calcMean(listOfMean):
     lenList = len(listOfMean)
     total = 0
     for i in listOfMean:
-        total += int(i)
+        total += float(i.replace(",", "."))
     mean = total / lenList
     return mean
 
@@ -97,7 +97,7 @@ def calcMedian(discreteValues):
     sortedValues = sorted(discreteValues)
     medianIndex = lenValues // 2
     if (lenValues % 2 == 0):
-        median = int(((int(sortedValues[medianIndex]) + int(sortedValues([medianIndex + 1]))) / 2))
+        median = int(((int(sortedValues[medianIndex]) + int(sortedValues[(medianIndex + 1)])) / 2))
     else:
         median = sortedValues[medianIndex]
     return median
@@ -113,9 +113,9 @@ def printResults(fileList, modes, means, deviations, medians, IQRs):
     deviationCounter = 0
     medianCounter = 0
     IQRCounter = 0
-    categoricalList = [[Name, Mode]]
-    continualList = [[Name, Mean, Deviation]]
-    discreteList = [[Name, median, IQR]]
+    categoricalList = [["Name", "Mode"]]
+    continualList = [["Name", "Mean", "Deviation"]]
+    discreteList = [["Name", "median", "IQR"]]
     for i in range(len(fileList[1])):
         tempList = []
         if fileList[1][i] == "categorical":
@@ -133,22 +133,25 @@ def printResults(fileList, modes, means, deviations, medians, IQRs):
         elif fileList[1][i] == "discrete":
             tempList.append(fileList[0][i])
             tempList.append(medians[medianCounter])
-            tempList.append(IRQs[IQRcounter])
+            tempList.append(IQRs[IQRCounter])
             medianCounter += 1
             IQRCounter += 1
             discreteList.append(tempList)
-    print("Categorical")
+    print("\n Categorical \n")
     for i in range(0, len(categoricalList)):
-        for j in range(0, len(categoricalList(i))):
-            print('{:<20}'.format(categoricalList[i][d]), end="" )
-    print("Continual")
+        for j in range(0, len(categoricalList[i])):
+            print('{:<20}'.format(categoricalList[i][j]), end="" )
+        print()
+    print("\n Continual \n")
     for i in range(0, len(continualList)):
-        for j in range(0, len(continualList(i))):
-            print('{:<20}'.format(continualList[i][d]), end="" )
-    print("Discrete")
+        for j in range(0, len(continualList[i])):
+            print('{:<20}'.format(continualList[i][j]), end="" )
+        print()
+    print("\n Discrete \n")
     for i in range(0, len(discreteList)):
-        for j in range(0, len(discreteList(i))):
-            print('{:<20}'.format(discreteList[i][d]), end="" )
+        for j in range(0, len(discreteList[i])):
+            print('{:<20}'.format(discreteList[i][j]), end="" )
+        print()
 
 
 fileName = enterFile()
@@ -186,21 +189,21 @@ fileList.insert(1, defineList)
 categoricalValues = []
 continualValues = []
 discreteValues = []
-for j in len(fileList[1]):
+for j in range(len(fileList[1])):
     tempList = []
     for k in range(2, len(fileList)):
-        tempList.append[k][j]
-    if a[1][j] == "categorical":
+        tempList.append(fileList[k][j])
+    if fileList[1][j] == "categorical":
         categoricalValues.append(tempList)
-    elif a[1][j] == "continual":
+    elif fileList[1][j] == "continual":
         continualValues.append(tempList)
-    elif a[1][j] == "discrete":
+    elif fileList[1][j] == "discrete":
         discreteValues.append(tempList)
 
 #if any categorical values exists, returns true
 if categoricalValues:
     Modes = []
-    for i in categoricalvalues:
+    for i in range(len(categoricalValues)):
         Modes.append(calcMode(categoricalValues[i]))
 
 #if any continual values exists, returns true
@@ -210,7 +213,7 @@ if continualValues:
         Means.append(calcMean(i))
     Deviations = []
     for i in range(len(continualValues)):
-        Deviations.append(calcDeviations(Values[i], Means[i]))
+        Deviations.append(calcDeviation(continualValues[i], Means[i]))
 
 #if any discrete values exists, returns true
 if discreteValues:
