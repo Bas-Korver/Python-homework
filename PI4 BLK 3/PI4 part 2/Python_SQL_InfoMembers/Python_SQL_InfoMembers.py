@@ -259,13 +259,10 @@ def Name_finder():
             elif len(Boetes_list) == len(Team_list):
                 Max_length = len(Boetes_list)
                 Loop = False
-
-        #Functie die kijkt wat de maximale lengte is zodat hij die lists kan overslaan
-        Editable_aantal = len(Editable_list)
-        for i in range(Max_length, Editable_aantal):
+        
+        #Functie die kijkt wat de maximale lengte is zodat hij die lists kan overslaan        
+        for i in range(Max_length, len(Editable_list)):
             Editable_list.remove(['', '', '', '', ''])
-            Editable_aantal -= 1
-
 
         #Print functie die alle kopnamen uitprint met variabele format lengtes.
         print('{:<2}{:<{Width1}}{:<{Width2}}{:<{Width3}}{:<{Width4}}{:<0}'.format('','Naam', 'Bedrag', 'Functienaam', 'Teamnaam', 'Aanvoerder', Width1 = Naam_length, Width2 = Boete_length, Width3 = Functie_length, Width4 = Team_length))
