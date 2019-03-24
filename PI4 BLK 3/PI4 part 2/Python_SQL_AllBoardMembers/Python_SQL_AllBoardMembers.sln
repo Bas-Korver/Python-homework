@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Python_SQL_AllBoardMembers", "Python_SQL_AllBoardMembers.pyproj", "{E8676D2C-1794-4E1F-A69E-3ED01E28B23A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8676D2C-1794-4E1F-A69E-3ED01E28B23A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8676D2C-1794-4E1F-A69E-3ED01E28B23A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46C81CA9-B932-4600-AE37-59488574DB14}
+	EndGlobalSection
+EndGlobal

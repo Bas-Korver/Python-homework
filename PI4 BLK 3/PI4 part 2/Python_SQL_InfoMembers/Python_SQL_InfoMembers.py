@@ -1,4 +1,4 @@
-    #Opdracht 8 Gemaakt door Joey Einerhand en Bas Körver.
+#Opdracht 8. Gemaakt door Joey Einerhand en Bas Körver.
 
 def Name_finder():
     import pyodbc
@@ -226,7 +226,7 @@ def Name_finder():
                 Editable_list[x][2] = ''
                 x += 1
 
-        #Functie die alle witruimtes tussen functies verwijderd
+        #Functie die alle witruimtes tussen functies verwijderd.
         x = 0
         if len(Editable_list) > len(Functie_list):
             for i in range(TeamXBoete_aantal, len(Editable_list), TeamXBoete_aantal):
@@ -234,7 +234,7 @@ def Name_finder():
                 Editable_list[x][2] = Editable_list[i][2]
                 Editable_list[i][2] = ''
 
-        #Functie die alle witruimtes tussen teams en aanvoerder(J/N) verwijderd
+        #Functie die alle witruimtes tussen teams en aanvoerder(J/N) verwijderd.
         x = 0
         if Boetes_aantal >= Team_aantal:
             for i in range(Boetes_aantal, len(Editable_list), Boetes_aantal):
@@ -244,7 +244,7 @@ def Name_finder():
                 Editable_list[i][3] = ''
                 Editable_list[i][4] = ''
 
-        #Functie die kijkt welke 'kolom' het langst is
+        #Functie die kijkt welke 'kolom' het langst is.
         Loop = True
         while Loop:
             if len(Functie_list) > len(Boetes_list) and len(Functie_list) > len(Team_list):
@@ -260,7 +260,7 @@ def Name_finder():
                 Max_length = len(Boetes_list)
                 Loop = False
         
-        #Functie die kijkt wat de maximale lengte is zodat hij die lists kan overslaan        
+        #Functie die kijkt wat de maximale lengte is zodat hij die lists kan overslaan.       
         for i in range(Max_length, len(Editable_list)):
             Editable_list.remove(['', '', '', '', ''])
 
@@ -271,7 +271,7 @@ def Name_finder():
         for i in range(0, len(Editable_list)):
                 print('{:<2}{:<{Width1}}{!s:<{Width2}}{!s:<{Width3}}{!s:<{Width4}}{!s:<0}'.format('', Editable_list[i][0], Editable_list[i][1], Editable_list[i][2], Editable_list[i][3], Editable_list[i][4], Width1 = Naam_length, Width2 = Boete_length, Width3 = Functie_length, Width4 = Team_length))
         
-        #Functie die vraagt of je nog een speler wilt opzoeken
+        #Functie die vraagt of je nog een speler wilt opzoeken.
         print('')
         Loop = True
         Fout_loop = True
