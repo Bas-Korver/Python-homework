@@ -4,11 +4,11 @@ def Name_finder():
     import pyodbc
     def_loop = True
     while def_loop:
-        conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=..\TennisDatabase.accdb')
+        conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=..\TennisDatabase1.accdb')
         Cursor = conn.cursor()
 
         #Naam query.
-        SQL_command = ("SELECT naam " +
+        SQL_command = ("SELECT spelersnr, naam " +
                        "FROM speler " +
                        "ORDER BY speler.naam ASC")
         Cursor.execute(SQL_command)
@@ -23,7 +23,7 @@ def Name_finder():
         while Loop:
             for speler in Naam_list:
                 if n < 15 and len(Naam_list) > 15:
-                    print(' ', speler.naam)
+                    print(' ', speler.spelersnr, speler.naam)
                     n += 1
                 elif n == 15:
                     print('')
@@ -39,7 +39,7 @@ def Name_finder():
                                 Fout_loop = False
                                 n = 16                                
                             else:
-                                print(' ', speler.naam)
+                                print(' ', speler.spelersnr, speler.naam)
                                 n = 0
                                 Fout_loop = False
                         
@@ -47,26 +47,24 @@ def Name_finder():
                         Loop = False
                         n = 16
                     else:
-                        print(' ', speler.naam)
+                        print(' ', speler.spelersnr, speler.naam)
                         n = 0
                 elif n != 16:
-                    print(' ', speler.naam)
+                    print(' ', speler.spelersnr, speler.naam)
             Loop = False
-        print('')
-
+        print('')        
         #Functie die aan de gebruiker de achternaam van de speler gevraagd.
         Loop = True
         Fout_loop = True
         while Loop:
-            Get_name = input('  Geef de naam die u wilt weergeven.\n  Let op de zoekopdracht is hoofletter gevoelig, dus typ de naam zoals weergegeven is. ')
+            Get_name = int(input('  Geef de spelers nummer die u wilt weergeven. '))
             if any(Get_name in sublist for sublist in Naam_list):
                 Loop = False
             else:
                 while Fout_loop:
                     if not any(Get_name in sublist for sublist in Naam_list):
                         print('')
-                        Get_name = input('  Naam niet gevonden in de database, check of u een spellingsfout heeft gemaakt en voer opieuw in.\n' +
-                                         '  Let op de zoekopdracht is hoofletter gevoelig, dus typ de naam zoals weergegeven is. ')
+                        Get_name = int(input('  Naam niet gevonden in de database, check of u een spellingsfout heeft gemaakt en voer opieuw in. '))
                     else:
                         Fout_loop = False
                         Loop = False
@@ -79,7 +77,7 @@ def Name_finder():
                        "LEFT JOIN teamspeler ON speler.spelersnr = teamspeler.spelersnr) " +
                        "LEFT JOIN functie ON bestuurslid.functie = functie.functienr) " +
                        "LEFT JOIN team ON teamspeler.teamnr = team.teamnr " +
-                       "WHERE (naam = '%s') " +
+                       "WHERE (speler.spelersnr = %d) " +
                        "ORDER BY bestuurslid.begin_datum, teamspeler.datumvan, boete.datum ASC") %(Get_name)
         Cursor.execute(SQL_command)
         Main_list = Cursor.fetchall()
@@ -87,7 +85,7 @@ def Name_finder():
         #Boetes query.
         SQL_command = ("SELECT bedrag " +
                        "FROM speler LEFT JOIN boete ON speler.spelersnr = boete.spelersnr " +
-                       "WHERE (naam = '%s')" +
+                       "WHERE (speler.spelersnr = %d)" +
                        "ORDER BY boete.bedrag DESC") %(Get_name)
         Cursor.execute(SQL_command)
         Boetes_list = Cursor.fetchall()
@@ -96,7 +94,7 @@ def Name_finder():
         SQL_command = ("SELECT functienaam " +
                        "FROM (speler LEFT JOIN bestuurslid ON speler.spelersnr = bestuurslid.spelersnr) " +
                        "LEFT JOIN functie ON bestuurslid.functie = functie.functienr " +
-                       "WHERE (naam = '%s')" +
+                       "WHERE (speler.spelersnr = %d)" +
                        "ORDER BY LEN(functienaam) DESC") %(Get_name)
         Cursor.execute(SQL_command)
         Functie_list = Cursor.fetchall()
@@ -105,7 +103,7 @@ def Name_finder():
         SQL_command = ("SELECT teamnaam " +
                        "FROM (speler LEFT JOIN teamspeler ON speler.spelersnr = teamspeler.spelersnr) " +
                        "LEFT JOIN team ON teamspeler.teamnr = team.teamnr " +
-                       "WHERE (naam = '%s')" +
+                       "WHERE (speler.spelersnr = %d)" +
                        "ORDER BY LEN(teamnaam) DESC") %(Get_name)
         Cursor.execute(SQL_command)
         Team_list = Cursor.fetchall()
@@ -123,7 +121,7 @@ def Name_finder():
         Loop = True
         while Loop:
             if Naam_length < 6:
-                Naam_length += 1
+                Naam_length = 6
             else:
                 Naam_length = str(Naam_length)
                 Loop = False 
@@ -144,7 +142,7 @@ def Name_finder():
         Loop = True
         while Loop:
             if Boete_length < 8:
-                Boete_length += 1
+                Boete_length = 8
             else:
                 Boete_length = str(Boete_length)
                 Loop = False
@@ -165,7 +163,7 @@ def Name_finder():
         Loop = True
         while Loop:
             if Functie_length < 13:
-                Functie_length += 1
+                Functie_length = 13
             else:
                 Functie_length = str(Functie_length)
                 Loop = False 
@@ -186,7 +184,7 @@ def Name_finder():
         Loop = True
         while Loop:
             if Team_length < 10:
-                Team_length += 1
+                Team_length = 10
             else:
                 Team_length = str(Team_length)
                 Loop = False 
@@ -201,7 +199,6 @@ def Name_finder():
     
         #Functie die de dubbele boetes verwijderd.
         for i in range(Boetes_aantal, len(Editable_list)):
-            Editable_list[i][1] = ''
             Editable_list[i][1] = ''
 
         #Functie die een deel van de dubbele teams en aanvoerder(J/N) verwijderd.
@@ -236,14 +233,14 @@ def Name_finder():
 
         #Functie die alle witruimtes tussen teams en aanvoerder(J/N) verwijderd.
         x = 0
-        if Boetes_aantal >= Team_aantal:
+        if Boetes_aantal > 1:
             for i in range(Boetes_aantal, len(Editable_list), Boetes_aantal):
                 x += 1
                 Editable_list[x][3] = Editable_list[i][3]
                 Editable_list[x][4] = Editable_list[i][4]
                 Editable_list[i][3] = ''
                 Editable_list[i][4] = ''
-
+        
         #Functie die kijkt welke 'kolom' het langst is.
         Loop = True
         while Loop:
@@ -278,7 +275,7 @@ def Name_finder():
         while Loop:
             a = input('  Wilt u nog een Speler opzoeken?\n' +
                              '  Ja?, druk op enter\n' +
-                             '  Nee?, typ stop ')
+                             '  Nee?, typ stop: ')
             print('')
             if a.lower() != '' and a.lower() != 'stop':
                 while Fout_loop:

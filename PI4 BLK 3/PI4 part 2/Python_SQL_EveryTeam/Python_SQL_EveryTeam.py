@@ -17,4 +17,3 @@ print('{:<21}{:<14}{:<0}'.format('Teamnaam', 'Divisie', 'Naam'))
 for i in range(0, len(Cursor_list)):
     print('{:<21}{:<14}{!s:<0}'.format(Cursor_list[i][0], Cursor_list[i][1], Cursor_list[i][2]))
 print('')
-
