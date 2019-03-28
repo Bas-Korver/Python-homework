@@ -4,7 +4,7 @@ def Name_finder():
     import pyodbc
     def_loop = True
     while def_loop:
-        conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=..\TennisDatabase1.accdb')
+        conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=..\TennisDatabase.accdb')
         Cursor = conn.cursor()
 
         #Naam query.
@@ -55,16 +55,37 @@ def Name_finder():
         print('')        
         #Functie die aan de gebruiker de achternaam van de speler gevraagd.
         Loop = True
+        Try_loop = True
         Fout_loop = True
         while Loop:
-            Get_name = int(input('  Geef de spelers nummer die u wilt weergeven. '))
+            while Try_loop:
+                try:
+                    Get_name = int(input('  Geef de spelers nummer die u wilt weergeven. '))
+                except ValueError:
+                    print('')
+                    print('  Heeft u perongelijk op enter gedrukt zonder iets in te typen?\n' +
+                          '                        probeer opnieuw')
+                    print('')
+                else:
+                    Try_loop = False
+            
             if any(Get_name in sublist for sublist in Naam_list):
                 Loop = False
             else:
                 while Fout_loop:
                     if not any(Get_name in sublist for sublist in Naam_list):
+                        Try_loop = True
                         print('')
-                        Get_name = int(input('  Naam niet gevonden in de database, check of u een spellingsfout heeft gemaakt en voer opieuw in. '))
+                        while Try_loop:
+                            try:
+                                Get_name = int(input('  Naam niet gevonden in de database, check of u een spellingsfout heeft gemaakt en voer opieuw in. '))
+                            except ValueError:
+                                print('')
+                                print('  Heeft u perongelijk op enter gedrukt zonder iets in te typen?\n' +
+                                      '                        probeer opnieuw')
+                                print('')
+                            else:
+                                Try_loop = False                       
                     else:
                         Fout_loop = False
                         Loop = False
