@@ -4,7 +4,7 @@ def Name_finder():
     import pyodbc
     def_loop = True
     while def_loop:
-        conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=..\TennisDatabase.accdb')
+        conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=..\TennisDatabase2.accdb')
         Cursor = conn.cursor()
 
         #Naam query van alle namen.
@@ -12,47 +12,62 @@ def Name_finder():
                        "FROM speler " +
                        "ORDER BY speler.naam ASC")
         Cursor.execute(SQL_command)
-        All_naam_list = Cursor.fetchall()
+        Alle_naam_list = Cursor.fetchall()
 
+        Alle_spelersnr_groote = []
+        Alle_naam_groote = []
+
+        for i in range(0, len(Alle_naam_list)):    
+            Alle_spelersnr_groote.append(str(Alle_naam_list[i][0]))
+
+        #Functie die kijkt hoeveel karakters de spelersnummer uit bestaat
+        Alle_spelersnr_lengte = len(max(Alle_spelersnr_groote, key=len)) + 2                
+                   
+
+        #Functie die kijkt of de aantal karakters 15 is, als dat niet zo is wordt de lengte automatisch 15.
+        Loop = True
+        while Loop:
+            if Alle_spelersnr_lengte < 15:
+                Alle_spelersnr_lengte = 15
+            else:
+                Alle_spelersnr_lengte = str(Alle_spelersnr_lengte)
+                Loop = False
+            
+        
         print('  Kies een naam die u wilt weergeven')
+        print('{:<2}{:<{Width1}}{:<0}'.format('', 'Spelersnummer', 'Naam', Width1 = Alle_spelersnr_lengte))
 
         #Functie voor het afdrukken van 15 namen per keer en om de 15 namen vragen of de gebruiker de naam heeft gevonden.
         Loop = True
         Fout_loop = True
         n = 0
-        while Loop:
-            for speler in All_naam_list:
-                if n < 15 and len(All_naam_list) > 15:
-                    print(' ', speler.spelersnr, speler.naam)
+        while Loop:            
+            for speler in Alle_naam_list:                
+                Fout_loop = True
+                if n < 15 and len(Alle_naam_list) > 15:
+                    print('{:<2}{:<{Width1}}{:<0}'.format('', speler.spelersnr, speler.naam, Width1 = Alle_spelersnr_lengte))                    
                     n += 1
                 elif n == 15:
                     print('')
                     a = input('  Druk enter voor de volgende pagina of typ stop als u de naam heeft gevonden. ')
                     print('')
-                    if a.lower() != '' and a.lower() != 'stop':
-                        while Fout_loop:
-                            if a.lower() != '' and a.lower() != 'stop':
-                                a = input('  u heeft iets anders ingetypt druk op enter of typ stop als u de naam heeft gevonden. ')
-                                print('')
-                            elif a.lower() == 'stop':
-                                Loop = False
-                                Fout_loop = False
-                                n = 16                                
-                            else:
-                                print(' ', speler.spelersnr, speler.naam)
-                                n = 0
-                                Fout_loop = False
-                        
-                    elif a.lower() == 'stop':
-                        Loop = False
-                        n = 16
-                    else:
-                        print(' ', speler.spelersnr, speler.naam)
-                        n = 0
+                    while Fout_loop:                                         
+                        if a.lower() != '' and a.lower() != 'stop':
+                            a = input('  u heeft iets anders ingetypt druk op enter of typ stop als u de naam heeft gevonden. ')
+                            print('')
+                        elif a.lower() == 'stop':                            
+                            n = 16
+                            Loop = False
+                            Fout_loop = False                                                            
+                        else:
+                            print('{:<2}{:<{Width1}}{:<0}'.format('', speler.spelersnr, speler.naam, Width1 = Alle_spelersnr_lengte))
+                            n = 0
+                            Fout_loop = False                   
                 elif n != 16:
-                    print(' ', speler.spelersnr, speler.naam)
+                    print('{:<2}{:<{Width1}}{:<0}'.format('', speler.spelersnr, speler.naam, Width1 = Alle_spelersnr_lengte))
             Loop = False
-        print('')        
+        print('') 
+        
         #Functie die aan de gebruiker de achternaam van de speler gevraagd.
         Loop = True
         Try_loop = True
@@ -60,7 +75,7 @@ def Name_finder():
         while Loop:
             while Try_loop:
                 try:
-                    Get_name = int(input('  Geef de spelers nummer die u wilt weergeven. '))
+                    Get_name = int(input('  Geef de spelersnummer die u wilt weergeven. '))
                 except ValueError:
                     print('')
                     print('  Heeft u perongelijk op enter gedrukt zonder iets in te typen?\n' +
@@ -69,11 +84,11 @@ def Name_finder():
                 else:
                     Try_loop = False
             
-            if any(Get_name in sublist for sublist in All_naam_list):
+            if any(Get_name in sublist for sublist in Alle_naam_list):
                 Loop = False
             else:
                 while Fout_loop:
-                    if not any(Get_name in sublist for sublist in All_naam_list):
+                    if not any(Get_name in sublist for sublist in Alle_naam_list):
                         Try_loop = True
                         print('')
                         while Try_loop:
@@ -192,7 +207,7 @@ def Name_finder():
             try:
                 Boetes_lengte = len(max(Boetes_groote, key=len)) + 2                
             except TypeError:
-                Boetes_lengte = 8                
+                Boetes_lengte = 7                
                 Loop = False                
             else:                
                 Loop = False        
@@ -200,8 +215,8 @@ def Name_finder():
         #Functie die kijkt of de aantal karakters 8 is, als dat niet zo is wordt de lengte automatisch 8.
         Loop = True
         while Loop:
-            if Boetes_lengte < 8:
-                Boetes_lengte = 8
+            if Boetes_lengte < 7:
+                Boetes_lengte = 7
             else:
                 Boetes_lengte = str(Boetes_lengte)
                 Loop = False
