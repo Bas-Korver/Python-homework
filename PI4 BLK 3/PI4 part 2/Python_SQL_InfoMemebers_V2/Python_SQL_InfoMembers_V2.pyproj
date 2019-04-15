@@ -3,13 +3,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>5c4a0ee4-f892-4987-bbbb-aea29903e4c9</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>Python_SQL_InfoMemebers_V2.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>Python_SQL_InfoMembers_V2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Python_SQL_InfoMemebers_V2</Name>
+    <Name>Python_SQL_InfoMembers_V2</Name>
     <RootNamespace>Python_SQL_InfoMemebers_V2</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -21,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Python_SQL_InfoMemebers_V2.py" />
+    <Compile Include="Python_SQL_InfoMembers_V2.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
