@@ -4,7 +4,7 @@ def Name_finder():
     import pyodbc
     def_loop = True
     while def_loop:
-        conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=..\TennisDatabase2.accdb')
+        conn = pyodbc.connect(r'Driver={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=..\TennisDatabase.accdb')
         Cursor = conn.cursor()
 
         #Naam query van alle namen.
@@ -165,7 +165,7 @@ def Name_finder():
 
         #Functie die de aantal lists in lists aanmaakt
         for i in range (0, Max_lengte):
-            Print_list.append(['', '', '', '', ''])        
+            Print_list.append(['', '', '', '', ''])
 
         Print_list[0][0] = Naam_list[0][0]        
 
