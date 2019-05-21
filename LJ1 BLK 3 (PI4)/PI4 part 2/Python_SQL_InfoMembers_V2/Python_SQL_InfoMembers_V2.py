@@ -15,9 +15,8 @@ def Name_finder():
         Alle_naam_list = Cursor.fetchall()
 
         Alle_spelersnr_groote = []
-        Alle_naam_groote = []
 
-        for i in range(0, len(Alle_naam_list)):    
+        for i in range(0, len(Alle_naam_list)):
             Alle_spelersnr_groote.append(str(Alle_naam_list[i][0]))
 
         #Functie die kijkt hoeveel karakters de spelersnummer uit bestaat
@@ -42,7 +41,7 @@ def Name_finder():
         Fout_loop = True
         n = 0
         while Loop:            
-            for speler in Alle_naam_list:                
+            for speler in Alle_naam_list:
                 Fout_loop = True
                 if n < 15 and len(Alle_naam_list) > 15:
                     print('{:<2}{:<{Width1}}{:<0}'.format('', speler.spelersnr, speler.naam, Width1 = Alle_spelersnr_lengte))                    
@@ -51,7 +50,7 @@ def Name_finder():
                     print('')
                     a = input('  Druk enter voor de volgende pagina of typ stop als u de naam heeft gevonden. ')
                     print('')
-                    while Fout_loop:                                         
+                    while Fout_loop and a.lower() != '' and a.lower() != 'stop':                                         
                         if a.lower() != '' and a.lower() != 'stop':
                             a = input('  u heeft iets anders ingetypt druk op enter of typ stop als u de naam heeft gevonden. ')
                             print('')
@@ -82,12 +81,9 @@ def Name_finder():
                           '                        probeer opnieuw')
                     print('')
                 else:
-                    Try_loop = False
-            
-            if any(Get_name in sublist for sublist in Alle_naam_list):
-                Loop = False
-            else:
-                while Fout_loop:
+                    Try_loop = False            
+
+                while Fout_loop and not any(Get_name in sublist for sublist in Alle_naam_list):
                     if not any(Get_name in sublist for sublist in Alle_naam_list):
                         Try_loop = True
                         print('')
