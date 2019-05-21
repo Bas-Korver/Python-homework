@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>ccc6b61c-2346-4177-9761-c18a215928b4</ProjectGuid>
+    <ProjectGuid>f56e8648-29e9-48ac-a8de-994cc1ec3b74</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>Binary_puzzle.py</StartupFile>
     <SearchPath>

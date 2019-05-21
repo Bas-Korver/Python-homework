@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Binary puzzle", "Binary puzzle\Binary puzzle.pyproj", "{CCC6B61C-2346-4177-9761-C18A215928B4}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Binary puzzle", "Binary puzzle\Binary puzzle.pyproj", "{F56E8648-29E9-48AC-A8DE-994CC1EC3B74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CCC6B61C-2346-4177-9761-C18A215928B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCC6B61C-2346-4177-9761-C18A215928B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F56E8648-29E9-48AC-A8DE-994CC1EC3B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F56E8648-29E9-48AC-A8DE-994CC1EC3B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0D7E1E3D-006D-4345-B091-45A16B8B3A4B}
+		SolutionGuid = {90A10C1F-EA8E-4EED-8BD3-0A40879002A3}
 	EndGlobalSection
 EndGlobal
