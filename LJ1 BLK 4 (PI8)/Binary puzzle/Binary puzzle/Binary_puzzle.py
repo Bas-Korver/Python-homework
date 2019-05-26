@@ -156,7 +156,7 @@ def veld_controle(speelveld, invul_veld, moeilijkheidsgraad):
                                'Geef alstublieft opnieuw eers de kolom, dan de rij en als laats het cijfer dat u in dat veld wilt invullen.\n' +
                                'Alles gescheiden door een spatie: ').split()
             print()
-            invul_veld = input_error_correction(invul_veld, moeilijkheidsgraad)
+            invul_veld = input_error_correction_veld(invul_veld, moeilijkheidsgraad)
         else:
             speelveld[invul_veld[1]][invul_veld[0]] = pr_red(invul_veld[2])
             error_loop = False
