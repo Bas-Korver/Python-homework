@@ -8,8 +8,7 @@ def prRed(input):
 def prGreen(input):
     return('\033[92m{}\033[00m' .format(input))
 
-def vraag_moeilijkheid():
-    error_loop = True
+def vraag_moeilijkheid():    
     moelijkheidsgraad = input('Geef het moeilijkheidsniveau op,\n' +
                               'U kan kiezen uit: 1, 2 en 3.\n' +
                               'Niveau 1 geeft u een 6x6 speelveld,\n' +
