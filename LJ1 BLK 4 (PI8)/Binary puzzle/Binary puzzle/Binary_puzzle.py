@@ -167,12 +167,13 @@ speelveld = speelveld_generator(moelijkheidsgraad)
 print_speelveld(speelveld)
 loop = True
 while loop:
-    aantal_zetten +=1
+    aantal_zetten += 1
     invul_veld = vraag_veld(moelijkheidsgraad)
     speelveld = veld_controle(speelveld, invul_veld, moelijkheidsgraad)
     print_speelveld(speelveld)
-    if sum(x.count("\033[92m{#}\033[00m") for x in speelveld) == 0:
-        elapsed_time = time.time() - start_time
+    if sum(x.count('\033[92m#\033[00m') for x in speelveld) == 0:        
+        elapsed_time = (time.time() - start_time) / 60
+        print()
         print('U hebt gekozen voor moeilijkheidsgraad:', moelijkheidsgraad)
         print()
         print('Gebruikte zetten:', aantal_zetten)
