@@ -49,10 +49,19 @@ def speelveld_generator(moelijkheidsgraad):
 
     return(speelveld)
 
-def print_speelveld(speelveld):
-    lines = []    
-    for row in speelveld:
-        lines.append(' '.join(str(x) for x in row))
+def print_speelveld(speelveld, moelijkheidsgraad):
+    lines = []
+    koptekst = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+    rijtekst = 0
+    grootte = moelijkheidsgraad * 2 + 4
+    for i in range(0, grootte):
+        print(koptekst[i], end = ' ')
+    print()
+    for x in speelveld:
+        rijtekst += 1
+        print(*x, rijtekst, sep=" ")
+
+
     print('\n'.join(lines))
 
 def vraag_veld(moeilijkheidsgraad):
@@ -164,7 +173,7 @@ start_time = time.time()
 aantal_zetten = 0
 moelijkheidsgraad = vraag_moeilijkheid()
 speelveld = speelveld_generator(moelijkheidsgraad)
-print_speelveld(speelveld)
+print_speelveld(speelveld, moelijkheidsgraad)
 loop = True
 while loop:
     aantal_zetten += 1
