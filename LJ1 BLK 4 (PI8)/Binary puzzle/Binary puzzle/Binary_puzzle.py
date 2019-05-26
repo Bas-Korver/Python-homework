@@ -2,10 +2,10 @@ import os
 import time
 os.system('cls')
 
-def prRed(input):
+def pr_red(input):
     return('\033[91m{}\033[00m' .format(input))
 
-def prGreen(input):
+def pr_green(input):
     return('\033[92m{}\033[00m' .format(input))
 
 def vraag_moeilijkheid():    
@@ -42,7 +42,7 @@ def speelveld_generator(moelijkheidsgraad):
     grootte = moelijkheidsgraad * 2 + 4
     for i in range(0, grootte):
         for x in range(0, grootte):            
-            temp.append(prGreen('#'))
+            temp.append(pr_green('#'))
         speelveld.append(temp)
         temp = []
 
@@ -163,7 +163,7 @@ def veld_controle(speelveld, invul_veld, moeilijkheidsgraad):
             print()
             invul_veld = input_error_correction(invul_veld, moeilijkheidsgraad)
         else:
-            speelveld[invul_veld[1]][invul_veld[0]] = prRed(invul_veld[2])
+            speelveld[invul_veld[1]][invul_veld[0]] = pr_red(invul_veld[2])
             error_loop = False
 
     return (speelveld)
