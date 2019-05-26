@@ -96,24 +96,19 @@ def input_error_correction_veld(invul_veld, moeilijkheidsgraad):
     while error_loop:
         try:
             invul_veld[0] = invul_veld[0].lower()
-        except IndexError:
-            invul_veld[0] = input('U heeft iets anders ingetypt bij de kolom letter\n' +
-                                  '         probeer alstublieft opnieuw: ').lower()
-            print()
-        else:
-            error_loop = False   
-    invul_veld[0] = (ord(invul_veld[0]) - 97)
-
-    error_loop = True
-    while error_loop and invul_veld[0] > grootte or invul_veld[0] < 0:
-        if invul_veld[0] > moelijkheidsgraad or invul_veld[0] < 0:            
-            invul_veld[0] = input('U heeft iets anders ingetypt bij de kolom letter\n' +
-                                  '         probeer alstublieft opnieuw: ').lower()
-            print()
             invul_veld[0] = (ord(invul_veld[0]) - 97)
+        except (IndexError, Exception):
+            invul_veld[0] = input('U heeft iets anders ingetypt bij de kolom letter\n' +
+                                  '         probeer alstublieft opnieuw: ').lower()
+            print()
         else:
-            error_loop = False
-
+            
+            if invul_veld[0] > grootte or invul_veld[0] < 0:            
+                invul_veld[0] = input('U heeft iets anders ingetypt bij de kolom letter\n' +
+                                  '         probeer alstublieft opnieuw: i').lower()
+                print()                
+            else:                
+                error_loop = False
 
     error_loop = True
     while error_loop:
@@ -178,7 +173,7 @@ while loop:
     aantal_zetten += 1
     invul_veld = vraag_veld(moelijkheidsgraad)
     speelveld = veld_controle(speelveld, invul_veld, moelijkheidsgraad)
-    print_speelveld(speelveld)
+    print_speelveld(speelveld, moelijkheidsgraad)
     if sum(x.count('\033[92m#\033[00m') for x in speelveld) == 0:        
         elapsed_time = (time.time() - start_time) / 60
         print()
