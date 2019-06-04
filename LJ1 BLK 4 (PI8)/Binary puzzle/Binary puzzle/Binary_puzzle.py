@@ -1,5 +1,6 @@
 import os
 import time
+import random
 os.system('cls')
 
 def pr_red(input):
@@ -42,11 +43,13 @@ def speelveld_generator(moelijkheidsgraad):
     grootte = moelijkheidsgraad * 2 + 4
     for i in range(0, grootte):
         for x in range(0, grootte):            
-            temp.append(pr_green('#'))
+            temp.append(pr_green(random.randint(0,1)))
         speelveld.append(temp)
         temp = []
 
     return(speelveld)
+
+ 
 
 def print_speelveld(speelveld, moelijkheidsgraad):
     lines = []
