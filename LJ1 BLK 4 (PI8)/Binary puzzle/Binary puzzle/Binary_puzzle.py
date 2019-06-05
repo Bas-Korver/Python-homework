@@ -43,12 +43,11 @@ def speelveld_generator(moelijkheidsgraad):
     grootte = moelijkheidsgraad * 2 + 4
     for i in range(0, grootte):
         for x in range(0, grootte):            
-            temp.append(pr_green(random.randint(0,1)))
+            temp.append(pr_green(random.randint(0, 1)))
         speelveld.append(temp)
         temp = []
 
     return(speelveld)
-
  
 
 def print_speelveld(speelveld, moelijkheidsgraad):
@@ -57,14 +56,13 @@ def print_speelveld(speelveld, moelijkheidsgraad):
     rijtekst = 0
     grootte = moelijkheidsgraad * 2 + 4
     for i in range(0, grootte):
-        print(koptekst[i], end = ' ')
+        print(koptekst[i], end=' ')
     print()
     for x in speelveld:
         rijtekst += 1
         print(*x, rijtekst, sep=" ")
-
-
     print('\n'.join(lines))
+
 
 def vraag_veld(moeilijkheidsgraad):
     invul_veld = input('Welk veld wilt u aanpassen?\n' +
@@ -73,6 +71,7 @@ def vraag_veld(moeilijkheidsgraad):
     invul_veld = input_error_correction_veld(invul_veld, moeilijkheidsgraad)   
         
     return(invul_veld)
+
 
 def input_error_correction_veld(invul_veld, moeilijkheidsgraad):
     grootte = moelijkheidsgraad * 2 + 4
