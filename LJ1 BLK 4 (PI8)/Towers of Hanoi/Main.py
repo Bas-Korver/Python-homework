@@ -180,14 +180,6 @@ class DiskMoveHelper:
             root = tkinter.Tk()
             end_window = GameEndWindow(root, moves_made, start_time)
             root.mainloop()
-            python = sys.executable
-            for name in dir():
-                if not name.startswith('_'):
-                    del globals()[name]
-
-            for name in dir():
-                if not name.startswith('_'):
-                    del locals()[name]
 
         else:
             # events that trigger when the user hasnt won yet
