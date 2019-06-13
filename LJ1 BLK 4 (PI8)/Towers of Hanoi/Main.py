@@ -1,15 +1,16 @@
+import os
+import sys
+import time
 import tkinter
 import turtle
-import time
-import sys
-import os
+
 
 class GameStartWindow:
     def __init__(self, master):
         self.master = master
-        x_coordinate = int((master.winfo_screenwidth() / 2) - 127)
+        x_coordinate = int((master.winfo_screenwidth() / 2) - 135)
         y_coordinate = int((master.winfo_screenheight() / 2) - 60)
-        master.geometry("254x120+{}+{}".format(x_coordinate, y_coordinate))
+        master.geometry("270x120+{}+{}".format(x_coordinate, y_coordinate))
         master.title('Towers of Hanoi')
 
         self.levels = [3, 4, 5, 6, 7, 8, 9]
@@ -30,7 +31,7 @@ class GameStartWindow:
         self.exit_button = tkinter.Button(master, text='Exit',
                                           command=exit,
                                           height=1, width=10)
-        self.exit_button.place(x=164, y=85)
+        self.exit_button.place(x=180, y=85)
         master.bind('<Return>', self.submit_function)
 
     def submit_function(self, event=None):
@@ -52,12 +53,15 @@ class GameEndWindow:
                                        text='You won!')
         self.label_one.place(x=4, y=10)
         self.variable_one = tkinter.StringVar(master)
-        self.variable_one.set('You have made {} moves '.format(self.moves_made))
+        self.variable_one.set(
+            'You have made {} moves '.format(self.moves_made))
         self.label_two = tkinter.Label(master, textvariable=self.variable_one)
         self.label_two.place(x=4, y=35)
         self.variable_two = tkinter.StringVar(master)
-        self.variable_two.set('and you have taken {} minute(s)'.format(self.elapsed_time))
-        self.label_three = tkinter.Label(master, textvariable=self.variable_two)
+        self.variable_two.set(
+            'and you have taken {} minute(s)'.format(self.elapsed_time))
+        self.label_three = tkinter.Label(master,
+                                         textvariable=self.variable_two)
         self.label_three.place(x=4, y=50)
         self.restart_button = tkinter.Button(master, text='Restart',
                                              command=self.restart_function,
@@ -72,11 +76,11 @@ class GameEndWindow:
 
     def restart_function(self, event=None):
         self.master.destroy()
-
+        python = sys.executable
+        os.execl(python, python, *sys.argv)
 
 
 class DiskMoveHelper:
-
     def __init__(self):
         # Tower which the disks is being moved from
         self.origin_tower = False
@@ -98,7 +102,7 @@ class DiskMoveHelper:
         self.select_destination_origin()
 
     def select_destination_origin(self):
-        if self.origin_tower == False:
+        if not self.origin_tower:
             self.origin_tower = pole_list[self.button_pressed]
             print(self.origin_tower)
         else:
@@ -131,7 +135,7 @@ class DiskMoveHelper:
         # if the destination pole is not empty, assign variables
         # Variables needed for next if statement
         # crashes without if statement
-        if (self.destination_tower.pole_content):
+        if self.destination_tower.pole_content:
             width1 = self.origin_tower.pole_content[-1].width
             width2 = self.destination_tower.pole_content[-1].width
 
@@ -180,15 +184,10 @@ class DiskMoveHelper:
             root = tkinter.Tk()
             end_window = GameEndWindow(root, moves_made, start_time)
             root.mainloop()
-
-        else:
-            # events that trigger when the user hasnt won yet
-            print("haven't won yet")
         self.cleanup()
 
 
 class MoveButton:
-
     def __init__(self):
         self.width = 100
         self.length = 50
@@ -206,7 +205,6 @@ class MoveButton:
 
 
 class PlayingFieldPole:
-
     def __init__(self):
         self.length = 140 + (amount_of_disks * 20)
         # Default width is 20
@@ -225,7 +223,6 @@ class PlayingFieldPole:
 
 
 class TowerDisk:
-
     def __init__(self):
         # Calculated in create_disks
         self.width = 0
@@ -314,33 +311,32 @@ def main():
     turtle.mainloop()
 
 
-while True:
-    # Pop-up window for level selection
-    root = tkinter.Tk()
-    start_window = GameStartWindow(root)
-    root.mainloop()
+# Pop-up window for level selection
+root = tkinter.Tk()
+start_window = GameStartWindow(root)
+root.mainloop()
 
-    # Deceleration of global variables
-    moves_made = 0
+# Deceleration of global variables
+moves_made = 0
 
-    pole_list = []
-    pole_turtle_list = []
+pole_list = []
+pole_turtle_list = []
 
-    # Biggest to smallest
-    disk_list = []
-    disk_turtle_list = []
+# Biggest to smallest
+disk_list = []
+disk_turtle_list = []
 
-    move_button_list = []
-    move_button_turtle_list = []
+move_button_list = []
+move_button_turtle_list = []
 
-    amount_of_disks = int(start_window.chosen_level)
+amount_of_disks = int(start_window.chosen_level)
 
-    main_window = turtle.Screen()
-    main_window.setup(1200, 700, None, None)
-    main_window.title("Towers of Hanoi")
-    main_window.colormode(255)
-    text_turtle = turtle.Turtle()
-    text_turtle.hideturtle()
-    turtle.speed('fastest')
-    DiskMoveHelper = DiskMoveHelper()
-    main()
+main_window = turtle.Screen()
+main_window.setup(1200, 700, None, None)
+main_window.title("Towers of Hanoi")
+main_window.colormode(255)
+text_turtle = turtle.Turtle()
+text_turtle.hideturtle()
+turtle.speed('fastest')
+DiskMoveHelper = DiskMoveHelper()
+main()
